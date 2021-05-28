@@ -1,4 +1,4 @@
-package com.example.matchinggame;
+package com.example.flipmatch;
 
 import android.annotation.SuppressLint;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.example.matchinggame.R;
 
 import java.text.DecimalFormat;
 

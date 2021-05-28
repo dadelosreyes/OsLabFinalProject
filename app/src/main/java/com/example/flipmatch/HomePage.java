@@ -1,4 +1,4 @@
-package com.example.matchinggame;
+package com.example.flipmatch;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -15,10 +15,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import com.example.matchinggame.R;
 
-import java.text.DecimalFormat;
-
-public class HomePage2_2 extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
 
     MediaPlayer BGM;
     Button btnLevel1, btnLevel2, btnLevel3, btnQuit;
@@ -27,35 +26,25 @@ public class HomePage2_2 extends AppCompatActivity {
     TextView textView;
 
     double score1;
-    double score2;
-    double score12;
 
-    DecimalFormat df = new DecimalFormat("######0.0");
-
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page2_2);
+        setContentView(R.layout.activity_home_page);
 
-        score2 = getIntent().getExtras().getDouble("Value1");
-        score1 = getIntent().getExtras().getDouble("Value2");
-
-        BGM = MediaPlayer.create(HomePage2_2.this,R.raw.bgm_wel);
+        BGM = MediaPlayer.create(HomePage.this,R.raw.bgm_wel);
         BGM.start();
 
         decorView = getWindow().getDecorView();
-        decorView.setOnSystemUiVisibilityChangeListener(visibility -> {
+        decorView.setOnSystemUiVisibilityChangeListener(visibility ->
+        {
             if (visibility == 0) {
                 decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
-        Animation animation= AnimationUtils.loadAnimation(HomePage2_2.this,R.anim.bounce);
-
-
+        Animation animation= AnimationUtils.loadAnimation(HomePage.this,R.anim.bounce);
         textView = findViewById(R.id.level1);
-
         textView.startAnimation(animation);
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.but_letsgo);
@@ -64,69 +53,57 @@ public class HomePage2_2 extends AppCompatActivity {
         btnLevel3 = findViewById(R.id.level_3);
         btnQuit = findViewById(R.id.exit);
 
-        btnLevel1.setText("Level-1\nScore: "+df.format(score1));
-        btnLevel2.setText("Level-2\nScore: "+df.format(score2));
-
-        btnLevel1.setOnClickListener(v -> showRes());
-
-        btnLevel2.setOnClickListener(v -> showRes2());
-
-        btnLevel3.setOnClickListener(v ->
-        {
+        btnLevel1.setOnClickListener(v -> {
             mp.start();
-            Intent intent = new Intent(getApplicationContext(), MainActivityL3.class);
-            score12 = score1 + score2;
-            intent.putExtra("Value2",score12);
-            intent.putExtra("Value1",score1);
-            startActivity(intent);
-            finish();
+            startActivity(new Intent(HomePage.this,MainActivity.class));
         });
+
+        btnLevel2.setOnClickListener(v -> showMsg2());
+
+        btnLevel3.setOnClickListener(v -> showMsg3());
 
         btnQuit.setOnClickListener(v -> finish());
 
     }
 
     @SuppressLint("SetTextI18n")
-    public void showRes()
+    public void showMsg2()
     {
-        final Dialog dialog=new Dialog(HomePage2_2.this);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        final Dialog dialog=new Dialog(HomePage.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.result_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.msg_dialog);
         Button sure_guide=dialog.findViewById(R.id.sure_guide);
-        TextView resultShow=dialog.findViewById(R.id.resultShow);
-        resultShow.setText("Your Level 1 score is: "+df.format(score1)+"\nConquer the next level");
+        TextView resultShow=dialog.findViewById(R.id.msgShow);
+        resultShow.setText("Please pass Level-1 first");
 
         sure_guide.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
 
     @SuppressLint("SetTextI18n")
-    public void showRes2()
+    public void showMsg3()
     {
-        final Dialog dialog=new Dialog(HomePage2_2.this);
+        final Dialog dialog=new Dialog(HomePage.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.result_dialog);
+        dialog.setContentView(R.layout.msg_dialog);
         Button sure_guide=dialog.findViewById(R.id.sure_guide);
-        TextView resultShow=dialog.findViewById(R.id.resultShow);
-        resultShow.setText("Your Level 2 score is: "+df.format(score2)+"\nConquer the next level");
+        TextView resultShow=dialog.findViewById(R.id.msgShow);
+        resultShow.setText("Please pass Level-2 first");
 
         sure_guide.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
 
-
     @Override
-    public void onWindowFocusChanged(boolean hasFocus)
-    {
+    public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
             decorView.setSystemUiVisibility(hideSystemBars());
         }
     }
 
-    private int hideSystemBars()
-    {
+    private int hideSystemBars() {
         return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -136,17 +113,16 @@ public class HomePage2_2 extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
         BGM.release();
         finish();
     }
+
 }

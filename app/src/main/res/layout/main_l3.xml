@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background_l3"
-    tools:context=".MainActivityL3">
+    tools:context="com.example.flipmatch.MainActivityL3">
 
     <TextView
         android:layout_width="match_parent"

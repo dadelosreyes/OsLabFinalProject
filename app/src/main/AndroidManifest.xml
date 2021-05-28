@@ -9,19 +9,19 @@
             android:roundIcon="@drawable/cover"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".HomePage2_2"/>
-        <activity android:name=".HomePage1_2" />
-        <activity android:name=".HomePage" />
-        <activity android:name=".GameOverScreen" />
-        <activity android:name=".MainActivityL3" />
-        <activity android:name=".MainActivityL2" />
-        <activity android:name=".WelcomeScreen">
+        <activity android:name="com.example.flipmatch.HomePage2_2"/>
+        <activity android:name="com.example.flipmatch.HomePage1_2" />
+        <activity android:name="com.example.flipmatch.HomePage" />
+        <activity android:name="com.example.flipmatch.GameOverScreen" />
+        <activity android:name="com.example.flipmatch.MainActivityL3" />
+        <activity android:name="com.example.flipmatch.MainActivityL2" />
+        <activity android:name="com.example.flipmatch.WelcomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.example.flipmatch.MainActivity" />
     </application>
 
 </manifest>
