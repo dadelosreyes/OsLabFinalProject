@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeScreen"
+    android:orientation="vertical"
+    android:background="@drawable/bgm_gradient" >
+
+    <TextView
+            android:id="@+id/level1"
+            android:layout_width="match_parent"
+            android:layout_height="303dp"
+            android:layout_gravity="top"
+            android:layout_marginTop="45dp"
+            android:fontFamily="@font/bungee_inline"
+            android:gravity="center"
+            android:shadowColor="@android:color/black"
+            android:shadowDy="1"
+            android:shadowDx="1"
+            android:shadowRadius="2"
+            android:text="Flip Match"
+            android:textColor="#FFFFFF"
+            android:textSize="82sp"/>
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/card_button"
+        android:fontFamily="@font/rammetto_one"
+        android:padding="10dp"
+        android:text="Play now"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+    <Button
+            android:id="@+id/instructions"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/card_button"
+            android:fontFamily="@font/rammetto_one"
+            android:padding="10dp"
+            android:text="Instructions"
+            android:textColor="#000000"
+            android:textSize="18sp"/>
+
+</LinearLayout>
